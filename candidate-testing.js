@@ -19,13 +19,13 @@ let candidateAnswers;
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-  let candidateName = input.question("Please enter your name: ")
+  candidateName = input.question("Please enter your name: ")
   console.log(candidateName);
 }
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-let candidateAnswer = input.question("Who was the first American woman in space? ");
+  candidateAnswer = input.question("Who was the first American woman in space? ");
 console.log(candidateAnswer);
 
 }
