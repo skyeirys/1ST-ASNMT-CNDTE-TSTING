@@ -27,22 +27,50 @@ function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   for (i = 0; i < questions.length; i++) {
     candidateAnswers.push(input.question(questions[i]));
-}
+  }
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  
+
   for (let i = 0; i < questions.length; i++) {
-    console.log(`The correct answer is ${correctAnswers[i]}. Your answer was ${candidateAnswers[i]}.`);
+    // console.log(`The correct answer is ${correctAnswers[i]}. ${candidateName}'s answer was ${candidateAnswers[i]}.`);
+    console.log(`Your Answer: ${candidateAnswers[i]}`)
+    if (candidateAnswers[i].toLowercase === correctAnswers[i].toLowerCase())
+      console.log(`Correct Answer: ${correctAnswers}`)
+    else {
+
+      console.log(`Wrong! The correct answer is ${correctAnswers[i]}`)
+    }
   }
 
 
 
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+  //TODO 3.2 use this variable to calculate the candidates score.
 
+  let numOfCorrectAnswers = 0
+  let numOfQuestions = 5;
+
+
+  correctAnswers = correctAnswers.toString().toLowerCase().split(",")
+  candidateAnswers = candidateAnswers.toString().toLowerCase().split(",")
+
+  console.log(correctAnswers);
+  console.log(candidateAnswers);
+
+  for (let i = 0; i < correctAnswers.length; i++) {
+    if (candidateAnswers[i] === correctAnswers[i])
+      numOfCorrectAnswers += 1;
+  }
+  let grade = (numOfCorrectAnswers) / (numOfQuestions) * 100;
+
+  if (grade >= 80) {
+    console.log(`Your grade is ${grade}. You passed!`);
+  } else {
+    console.log(`Your grade is ${grade}. You failed! Try again!`);
+  }
 
   return grade;
 }
@@ -50,7 +78,7 @@ function gradeQuiz(candidateAnswers) {
 function runProgram() {
   askForName();
   // TODO 1.1c: Greet candidate using their name //
-   console.log("Hello " + candidateName);
+  console.log("Hello " + candidateName);
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
